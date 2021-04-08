@@ -1,0 +1,17 @@
+package EDM2RootAlg
+
+use SniperKernel v*
+use EvtNavigator v* DataModel
+use PhyEvent     v* DataModel
+use DataRegistritionSvc  v*  DataModel
+use BufferMemMgr v* CommonSvc
+
+library EDM2RootAlg *.cc
+apply_pattern linker_library library=EDM2RootAlg
+apply_pattern install_python_modules
+
+# in command line:
+# $ export CMTEXTRATAGS=opticks 
+
+macro_append EDM2RootAlg_cppflags " " \
+             opticks " -DWITH_G4OPTICKS "
